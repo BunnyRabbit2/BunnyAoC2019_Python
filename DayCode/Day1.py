@@ -28,7 +28,7 @@ def solvePuzzle2(fileLocation):
         while(True):
             fuel = getFuelFromMass(nextFuel)
 
-            if(fuel < 1):
+            if fuel < 1:
                 break
 
             nextFuel = fuel
