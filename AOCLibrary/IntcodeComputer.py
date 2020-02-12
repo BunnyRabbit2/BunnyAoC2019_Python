@@ -28,9 +28,9 @@ class IntcodeComputer:
 
     def getValueFromAddress(self, address):
         if (address >= len(self.program)):
-            return int(self.extraMemory[str(address)])
+            return self.extraMemory[str(address)]
         else:
-            return int(self.program[address])
+            return self.program[address]
 
     def setValue(self, param, mode):
         if mode == 1:
@@ -43,29 +43,28 @@ class IntcodeComputer:
         currentInput = 0
         output = 0
         terminated = False
+        self.program = [int(p) for p in self.program]
 
         while True:
-            operation = [int(self.program[self.readAddress]), int(self.program[self.readAddress+1]), int(self.program[self.readAddress+2]), int(self.program[self.readAddress+3])]
-
-            if operation[0] == 99:
+            if self.program[self.readAddress] == 99:
                 break
 
-            opcode = operation[0] % 10
+            opcode = self.program[self.readAddress] % 10
 
-            firstMode = (operation[0] / 100) % 10
-            secondMode = (operation[0] / 1000) % 10
-            thirdMode = (operation[0] / 10000) % 10
+            firstMode = (self.program[self.readAddress] / 100) % 10
+            secondMode = (self.program[self.readAddress] / 1000) % 10
+            thirdMode = (self.program[self.readAddress] / 10000) % 10
 
             firstParam = 0
             secondParam = 0
             thirdParam = 0
 
             if self.readAddress + 1 < len(self.program) - 1:
-                firstParam = operation[1]
+                firstParam = self.program[self.readAddress+1]
             if self.readAddress + 2 < len(self.program) - 1:
-                secondParam = operation[2]
+                secondParam = self.program[self.readAddress+2]
             if self.readAddress + 3 < len(self.program) - 1:
-                thirdParam = operation[3]
+                thirdParam = self.program[self.readAddress+3]
 
             if opcode == 3:
                 if currentInput < len(self.inputs):
@@ -96,7 +95,7 @@ class IntcodeComputer:
 
             firstValue = self.setValue(firstParam, firstMode)
             secondValue = self.setValue(secondParam, secondMode)
-            thirdValue = self.setValue(thirdParam, thirdMode)
+            thirdValue = thirdParam + relativeBase if thirdMode == 2 else thirdParam
 
             if opcode == 1:
                 self.setValueToAddress(thirdValue, firstValue + secondValue)
