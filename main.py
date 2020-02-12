@@ -5,7 +5,8 @@ def main():
     # Solving.solveDay1()
     # Solving.solveDay2()
     # Solving.solveDay3()
-    Solving.solveDay4()
+    # Solving.solveDay4()
+    Solving.solveDay5()
 
 if __name__ == "__main__":
     main()

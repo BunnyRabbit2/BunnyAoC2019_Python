@@ -19,7 +19,7 @@ def solvePuzzle1(fileLocation):
         if i.ManDist < currentShortest.ManDist:
             currentShortest = i
 
-    print("Day3: Puzzle 1 Solution - " + str(currentShortest.ManDist))
+    print("Day 3 Puzzle 1 Solution - " + str(currentShortest.ManDist))
 
 def solvePuzzle2(fileLocation):
     lines = []
@@ -39,4 +39,4 @@ def solvePuzzle2(fileLocation):
         if i.WireLength < currentShortest.WireLength:
             currentShortest = i
 
-    print("Day3: Puzzle 2 Solution - " + str(currentShortest.WireLength))
+    print("Day 3 Puzzle 2 Solution - " + str(currentShortest.WireLength))

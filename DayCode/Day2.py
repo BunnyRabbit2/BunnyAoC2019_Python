@@ -6,7 +6,7 @@ def loadInputs(fileLocation):
     if file.exists():
         return file.read_text().split(",")
     else:
-        print("Day 1 input file does not exist")
+        print("Day 2 input file does not exist")
 
 def solvePuzzle1(fileLocation):
     icp = IntcodeComputer.IntcodeComputer(loadInputs(fileLocation))
@@ -16,7 +16,7 @@ def solvePuzzle1(fileLocation):
 
     result = icp.runProgram(0)
 
-    print("Day2: Puzzle 1 solution - " + str(result))
+    print("Day 2 Puzzle 1 solution - " + str(result))
 
 def solvePuzzle2(fileLocation):
     icp = IntcodeComputer.IntcodeComputer(loadInputs(fileLocation))
@@ -42,4 +42,4 @@ def solvePuzzle2(fileLocation):
             
     solution = 100 * noun + verb
 
-    print("Day2: Puzzle 2 solution - " + str(solution))
+    print("Day 2 Puzzle 2 solution - " + str(solution))

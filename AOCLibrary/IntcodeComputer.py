@@ -51,9 +51,9 @@ class IntcodeComputer:
 
             opcode = self.program[self.readAddress] % 10
 
-            firstMode = (self.program[self.readAddress] / 100) % 10
-            secondMode = (self.program[self.readAddress] / 1000) % 10
-            thirdMode = (self.program[self.readAddress] / 10000) % 10
+            firstMode = int((self.program[self.readAddress] / 100) % 10)
+            secondMode = int((self.program[self.readAddress] / 1000) % 10)
+            thirdMode = int((self.program[self.readAddress] / 10000) % 10)
 
             firstParam = 0
             secondParam = 0
