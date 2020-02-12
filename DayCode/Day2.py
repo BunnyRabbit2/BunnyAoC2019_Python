@@ -1,3 +1,6 @@
+import pathlib
+from AOCLibrary import IntcodeComputer
+
 def loadInputs(fileLocation):
     file = pathlib.Path(fileLocation)
     if file.exists():
@@ -6,7 +9,7 @@ def loadInputs(fileLocation):
         print("Day 1 input file does not exist")
 
 def solvePuzzle1(fileLocation):
-    icp = IntcodeComputer(loadInputs(fileLocation))
+    icp = IntcodeComputer.IntcodeComputer(loadInputs(fileLocation))
 
     icp.setValueToAddress(1, 12)
     icp.setValueToAddress(2, 2)
