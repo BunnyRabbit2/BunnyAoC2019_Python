@@ -1,4 +1,4 @@
-from DayCode import Day1, Day2, Day3
+from DayCode import Day1, Day2, Day3, Day4
 
 def solveDay1():
     Day1.solvePuzzle1("inputs/day1.txt")
@@ -11,3 +11,7 @@ def solveDay2():
 def solveDay3():
     Day3.solvePuzzle1("inputs/day3.txt")
     Day3.solvePuzzle2("inputs/day3.txt")
+
+def solveDay4():
+    Day4.solvePuzzle1("inputs/day4.txt")
+    Day4.solvePuzzle2("inputs/day4.txt")
