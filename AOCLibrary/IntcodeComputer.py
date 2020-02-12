@@ -1,5 +1,3 @@
-
-
 class IntCodeComputer:
     def __init__(self, program):
         self.result = 0
@@ -10,7 +8,7 @@ class IntCodeComputer:
         self.readAddress = 0
         self.inputs = []
 
-    def resetProgram(self)
+    def resetProgram(self):
         self.result = 0
         self.relativeBase = 0
         self.program = list(self.initialProgram)
@@ -34,10 +32,10 @@ class IntCodeComputer:
         else:
             return self.program[address]
 
-    def setValue(self, param, mode)
+    def setValue(self, param, mode):
         if mode == 1:
             return param
-        elif mode = 2:
+        elif mode == 2:
             return self.getValueFromAddress(param + self.relativeBase)
         else: return self.getValueFromAddress(param)
 
@@ -95,7 +93,7 @@ class IntCodeComputer:
                 return (output, terminated)
 
             firstValue = self.setValue(firstParam, firstMode)
-            secondValue = self.setValue(secondParamm secondMode)
+            secondValue = self.setValue(secondParamm, secondMode)
             thirdValue = self.setValue(thirdParam, thirdMode)
 
             if opcode == 1:
@@ -142,5 +140,5 @@ class IntCodeComputer:
         terminated = True
         if resultAddress == -1:
             return output
-        else
+        else:
             return self.getValueFromAddress(resultAddress)
