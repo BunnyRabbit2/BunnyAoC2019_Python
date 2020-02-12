@@ -1,3 +1,5 @@
+import pathlib
+
 class Line:
     def __init__(self, x1, y1, x2, y2):
         self.X1 = x1
@@ -27,7 +29,7 @@ class Intersection:
         self.X = xIn
         self.Y = yIn
         self.ManDist = abs(xIn) + abs(yIn)
-        self.wireLength = wireLengthIn
+        self.WireLength = wireLengthIn
 
 def lengthBetweenTwoPoints(x1,y1,x2,y2):
     MaxX = max(x1,x2)

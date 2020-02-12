@@ -10,4 +10,4 @@ def solveDay2():
 
 def solveDay3():
     Day3.solvePuzzle1("inputs/day3.txt")
-    # Day3.solvePuzzle2("inputs/day3.txt")
+    Day3.solvePuzzle2("inputs/day3.txt")
