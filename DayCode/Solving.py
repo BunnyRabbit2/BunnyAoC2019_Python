@@ -6,3 +6,4 @@ def solveDay1():
 
 def solveDay2():
     Day2.solvePuzzle1("inputs/day2.txt")
+    Day2.solvePuzzle2("inputs/day2.txt")
