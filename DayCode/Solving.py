@@ -26,4 +26,4 @@ def solveDay6():
 
 def solveDay7():
     Day7.solvePuzzle1("inputs/day7.txt")
-    # Day7.solvePuzzle2("inputs/day7.txt")
+    Day7.solvePuzzle2("inputs/day7.txt")
