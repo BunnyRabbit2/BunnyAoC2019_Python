@@ -140,6 +140,6 @@ class IntcodeComputer:
 
         terminated = True
         if resultAddress == -1:
-            return output
+            return (output, True)
         else:
-            return self.getValueFromAddress(resultAddress)
+            return (self.getValueFromAddress(resultAddress), True)
