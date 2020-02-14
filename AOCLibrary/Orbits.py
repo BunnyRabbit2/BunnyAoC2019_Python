@@ -46,6 +46,8 @@ class OrbitTree:
         for n in self.orbits:
             totalOrbits += self.orbits[n].distanceToRoot
 
+        totalOrbits += len(self.orbits) # Add first orbits on
+
         return totalOrbits
 
     def getDistanceBetweenTwoOrbits(self, startNode, endNode):
