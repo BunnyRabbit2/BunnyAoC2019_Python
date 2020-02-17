@@ -7,7 +7,7 @@ def loadInputs(fileLocation):
     if file.exists():
         return file.read_text().split(",")
     else:
-        print("Day 8 input file does not exist")
+        print("Day 9 input file does not exist")
 
 def solvePuzzle1(fileLocation):
     icp = IntcodeComputer.IntcodeComputer(loadInputs(fileLocation))
