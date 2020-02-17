@@ -7,6 +7,7 @@ class IntcodeComputer:
         self.extraMemory = []
         self.readAddress = 0
         self.inputs = []
+        self.currentInput = 0
 
     def resetProgram(self):
         self.result = 0
@@ -15,6 +16,7 @@ class IntcodeComputer:
         self.extraMemory = []
         self.readAddress = 0
         self.inputs = []
+        self.currentInput = 0
 
     def addInput(self, input):
         self.inputs.append(input)
@@ -40,7 +42,6 @@ class IntcodeComputer:
         else: return self.getValueFromAddress(param)
 
     def runProgram(self, resultAddress = -1):
-        currentInput = 0
         output = 0
         terminated = False
         self.program = [int(p) for p in self.program]
@@ -67,12 +68,12 @@ class IntcodeComputer:
                 thirdParam = self.program[self.readAddress+3]
 
             if opcode == 3:
-                if currentInput < len(self.inputs):
+                if self.currentInput < len(self.inputs):
                     if firstMode == 2:
-                        self.setValueToAddress(firstParam + self.relativeBase, self.inputs[currentInput])
+                        self.setValueToAddress(firstParam + self.relativeBase, self.inputs[self.currentInput])
                     else:
-                        self.setValueToAddress(firstParam, self.inputs[currentInput])
-                    currentInput += 1
+                        self.setValueToAddress(firstParam, self.inputs[self.currentInput])
+                    self.currentInput += 1
                     self.readAddress += 2
                 else:
                     print("IntcodeComputer Error. Asked for input not provided")

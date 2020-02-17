@@ -71,4 +71,7 @@ def solvePuzzle2(fileLocation):
         if signal > maxSignal:
             maxSignal = signal
 
+        for i in range(0,5):
+            amps[i].resetProgram()
+
     print("Day 7 Puzzle 2 solution - " + str(maxSignal))
