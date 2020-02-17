@@ -59,37 +59,12 @@ def distanceBetweenAsteroids(ast1, ast2):
     return math.sqrt((ast1.X - ast2.X)**2 + (ast1.Y - ast2.Y)**2)
 
 def getBearingBetweenAsteroids(ast1, ast2, returnDegrees = True):
-    x1 = ast1.X
-    y1 = ast1.Y
-    x2 = ast2.X
-    y2 = ast2.Y
-    a = 0
-    o = 0
-
-    if y1 < y2:
-        a = y2 - y1
-    else:
-        a = y1 - y2
-
-    if x1 < x2:
-        o = x2 - x1
-    else:
-        o = x1 - x2
+    a = ast1.X - ast2.X
+    o = ast1.Y - ast2.Y
 
     theta = math.atan2(o,a)
 
-    theta = theta * (180/3.142)
-
-    if y1 < y2: # South of point
-        if x1 > x2:
-            theta = 180 + theta # east of point
-        else:
-            theta = 180 - theta # west of point
-    else:
-        if x1 > x2:
-            theta = 360 - theta # north of point
-
     if returnDegrees:
-        return theta
+        return theta * (180/3.142)
     else:
-        return theta * (3.142/180)
+        return theta
