@@ -4,7 +4,7 @@ class IntcodeComputer:
         self.relativeBase = 0
         self.program = program
         self.initialProgram = program
-        self.extraMemory = []
+        self.extraMemory = {}
         self.readAddress = 0
         self.inputs = []
         self.currentInput = 0
@@ -13,7 +13,7 @@ class IntcodeComputer:
         self.result = 0
         self.relativeBase = 0
         self.program = list(self.initialProgram)
-        self.extraMemory = []
+        self.extraMemory = {}
         self.readAddress = 0
         self.inputs = []
         self.currentInput = 0
@@ -30,7 +30,12 @@ class IntcodeComputer:
 
     def getValueFromAddress(self, address):
         if (address >= len(self.program)):
-            return self.extraMemory[str(address)]
+            newAdd = address - len(self.program)
+            if str(newAdd) in self.extraMemory:
+                return self.extraMemory[str(newAdd)]
+            else:
+                self.extraMemory[str(newAdd)] = 0
+                return 0
         else:
             return self.program[address]
 
@@ -96,7 +101,7 @@ class IntcodeComputer:
 
             firstValue = self.setValue(firstParam, firstMode)
             secondValue = self.setValue(secondParam, secondMode)
-            thirdValue = thirdParam + relativeBase if thirdMode == 2 else thirdParam
+            thirdValue = thirdParam + self.relativeBase if thirdMode == 2 else thirdParam
 
             if opcode == 1:
                 self.setValueToAddress(thirdValue, firstValue + secondValue)
