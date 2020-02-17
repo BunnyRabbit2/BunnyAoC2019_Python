@@ -14,7 +14,7 @@ class SpaceImageFormat:
 
         for i in range(0,noOfLayers):
             newLayer = []
-            startIndex = i + pixelsPerLayer
+            startIndex = i * pixelsPerLayer
 
             for j in range(0,pixelsPerLayer):
                 newLayer.append(self.imageData[startIndex + j])
@@ -25,10 +25,16 @@ class SpaceImageFormat:
         for p in self.layers[0]:
             self.colourData.append(p) # Copy first layer in
 
-        for li, l in enumerate(self.layers):
+        for p in range(0,len(self.colourData)):
+            for l in self.layers:
+                if l[p] != 2:
+                    self.colourData[p] = l[p]
+                    break
+
+        """ for li, l in enumerate(self.layers):
             for pi, p in enumerate(self.colourData):
                 if p == 2:
-                    p = self.layers[li][pi]
+                    self.colourData[pi] = self.layers[li][pi] """
 
     def verifyData(self):
         noOfZeroes = []
