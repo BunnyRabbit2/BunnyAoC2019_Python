@@ -37,5 +37,7 @@ def solveDay9():
     Day9.solvePuzzle2("inputs/day9.txt")
 
 def solveDay10():
-    Day10.solvePuzzle1("inputs/day10.txt")
-    Day10.solvePuzzle2("inputs/day10.txt")
+    Day10.AField.createField(Day10.loadInputs("inputs/day10.txt"))
+    Day10.AField.setStation()
+    Day10.solvePuzzle1()
+    Day10.solvePuzzle2()

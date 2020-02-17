@@ -1,4 +1,5 @@
 import math
+from operator import attrgetter
 
 class Asteroid:
     AsteroidId = 0
@@ -8,12 +9,14 @@ class Asteroid:
         self.Y = yIn
         self.asteroidsInSight = 0
         self.id = Asteroid.AsteroidId
+        self.distFromStation = 0
         Asteroid.AsteroidId += 1
 
 class AstField:
     def __init__(self):
         self.astInPlace = []
         self.asteroids = []
+        self.station = 0
 
     def createField(self, dataIn): # must be a 2D array
         height = len(dataIn)
@@ -32,7 +35,7 @@ class AstField:
                     self.asteroids.append(newA)
                     self.astInPlace[w][h] = newA.id
     
-    def getBestPlacement(self):
+    def setStation(self):
         bestPlacement = Asteroid()
 
         for a in self.asteroids:
@@ -53,7 +56,38 @@ class AstField:
             if a.asteroidsInSight > bestPlacement.asteroidsInSight:
                 bestPlacement = a
 
-        return bestPlacement
+        self.station = bestPlacement
+
+    def getAsteroidDestroyedAtN(self, n):
+        targets = {}
+
+        for a in self.asteroids:
+            angle = getBearingBetweenAsteroids(self.station, a)
+            if angle not in targets:
+                targets[angle] = []
+            targets[angle].append(a)
+            a.distFromStation = distanceBetweenAsteroids(self.station,a)
+
+        keysInOrder = sorted(targets.keys())
+
+        for l in targets.values():
+            l.sort(key=attrgetter('distFromStation'))
+
+        nthAst = 0
+        keyIdx = 0
+        for i in range(0,n):
+            circuit = []
+            while True:
+                circuit = targets[keysInOrder[keyIdx]]
+                keyIdx = (keyIdx + 1) % len(keysInOrder)
+                if len(circuit) != 0:
+                    break
+
+            nthAst = circuit[0]
+            circuit.pop()
+
+        return nthAst
+
                 
 def distanceBetweenAsteroids(ast1, ast2):
     return math.sqrt((ast1.X - ast2.X)**2 + (ast1.Y - ast2.Y)**2)
