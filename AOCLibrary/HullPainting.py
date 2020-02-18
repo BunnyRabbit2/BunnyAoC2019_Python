@@ -74,3 +74,49 @@ class HullPainterRobot:
 
     def panelsPainted(self):
         return len(self.panels)
+
+    def drawPoint(self, x, y, value):
+        paint = ' '
+
+        while len(self.hullPaint) - 1 < y:
+            self.hullPaint.append([])
+
+        while len(self.hullPaint[y]) - 1 < x:
+            self.hullPaint[y].append(paint)
+
+        if value == 1:
+            paint = '#'
+
+        self.hullPaint[y][x] = paint
+
+    def transferPanelsToPaint(self):
+        minX = 0
+        minY = 0
+
+        for pair in self.panels:
+            pX = pair[0]
+            pY = pair[1]
+
+            if pX < minX :
+                minX = pX
+            if pY < minY:
+                minY = pY
+
+        if minX < 0:
+            minX = abs(minX)
+        else:
+            minX = 0
+        if minY < 0:
+            minY = abs(minY)
+        else:
+            minY = 0
+
+        for pair in self.panels:
+            self.drawPoint(pair[0] + minX, pair[1] + minY, self.panels[pair])
+
+    def displayHullPaint(self):
+        self.transferPanelsToPaint()
+
+        for line in self.hullPaint:
+            s = ""
+            print(s.join(line))

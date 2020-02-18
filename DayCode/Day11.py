@@ -17,6 +17,7 @@ def solvePuzzle1(fileLocation):
     print("Day 11 Puzzle 1 solution - " + str(result))
 
 def solvePuzzle2(fileLocation):
-    result = 0
+    robot = HullPainterRobot(loadInputs(fileLocation))
+    robot.paintPanels(1)
 
-    print("Day 11 Puzzle 2 solution - " + str(result))
+    result = robot.displayHullPaint()
