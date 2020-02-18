@@ -11,7 +11,8 @@ def main():
     # Solving.solveDay7()
     # Solving.solveDay8()
     # Solving.solveDay9()
-    Solving.solveDay10()
+    # Solving.solveDay10()
+    Solving.solveDay11()
 
 if __name__ == "__main__":
     main()

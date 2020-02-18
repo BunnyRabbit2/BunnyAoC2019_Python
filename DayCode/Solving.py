@@ -1,4 +1,4 @@
-from DayCode import Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, Day9, Day10
+from DayCode import Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, Day9, Day10, Day11
 
 def solveDay1():
     Day1.solvePuzzle1("inputs/day1.txt")
@@ -41,3 +41,7 @@ def solveDay10():
     Day10.AField.setStation()
     Day10.solvePuzzle1()
     Day10.solvePuzzle2()
+
+def solveDay11():
+    Day11.solvePuzzle1("inputs/day11.txt")
+    Day11.solvePuzzle2("inputs/day11.txt")
